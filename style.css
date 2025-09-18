@@ -1,0 +1,45 @@
+:root {
+    --text: #000000;
+    --background: #d1e0f8;
+    --primary: #0b28aa;
+    --secondary: #f7f7fc;
+    --accent: #073170;
+}
+
+body {
+    color: var(--text);
+    background: var(--background);
+    font-family: "Gentium Book Plus";
+}
+
+.Greek {
+    color: var(--accent);
+}
+
+.image-border {
+    padding: 4px;
+    border-radius: 16px;
+    background: var(--secondary);
+    width: fit-content;
+}
+
+img {
+    padding: 4px;
+    border: 6px solid var(--primary);
+    border-radius: 16px;
+    background: var(--secondary);
+}
+
+audio {
+    padding: 3px;
+    border-radius: 16px;
+    background: var(--accent)
+}
+
+.sweet {
+    color: rgb(223, 128, 5);
+}
+
+.fresh {
+    color: rgb(4, 179, 91);
+}
