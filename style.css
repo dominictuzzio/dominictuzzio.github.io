@@ -12,15 +12,15 @@ body {
     font-family: "Gentium Book Plus";
 }
 
-.greek {
-    color: var(--accent);
-}
-
 .image-border {
     padding: 4px;
     border-radius: 16px;
     background: var(--secondary);
     width: fit-content;
+}
+
+p {
+    max-width: 800px;
 }
 
 img {
@@ -38,8 +38,18 @@ audio {
 
 .sweet {
     color: rgb(223, 128, 5);
+    font-style: italic;
+    font-weight: bold;
+    text-decoration: rgb(223, 128, 5) wavy underline;
+    display: inline-block;
+    border-top: solid 1px rgb(223, 128, 5);
+    line-height: 12px;
 }
 
 .fresh {
     color: rgb(4, 179, 91);
+    font-size: small;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: rgb(4, 179, 91) wavy underline;
 }
