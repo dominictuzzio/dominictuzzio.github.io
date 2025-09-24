@@ -42,7 +42,7 @@ audio {
     font-weight: bold;
     text-decoration: rgb(223, 128, 5) wavy underline;
     display: inline-block;
-    border-top: solid 1px rgb(223, 128, 5);
+    border-top: solid 1.80px rgb(223, 128, 5);
     line-height: 12px;
 }
 
