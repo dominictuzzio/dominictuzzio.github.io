@@ -6,6 +6,10 @@
     --accent: #073170;
 }
 
+* {
+    /* border: 1px solid red;   */
+}
+
 body {
     color: var(--text);
     background: var(--background);
@@ -13,10 +17,10 @@ body {
 }
 
 .image-border {
-    padding: 4px;
+    padding: 4px 4px 0px;
     border-radius: 16px;
     background: var(--secondary);
-    width: fit-content;
+    display: inline-block;
 }
 
 p {
@@ -33,7 +37,10 @@ img {
 audio {
     padding: 3px;
     border-radius: 16px;
-    background: var(--accent)
+    background: var(--accent);
+    margin: 1em;
+    margin: 20px;
+    border: 2mm ridge var(--accent);
 }
 
 .sweet {
