@@ -43,20 +43,20 @@ audio {
     border: 2mm ridge var(--accent);
 }
 
-.sweet {
-    color: rgb(223, 128, 5);
+/* .sweet {
+    color: hsl(34, 96%, 20%);
     font-style: italic;
     font-weight: bold;
     text-decoration: rgb(223, 128, 5) wavy underline;
     display: inline-block;
     border-top: solid 1.80px rgb(223, 128, 5);
-    line-height: 12px;
-}
+    line-height: 12px; */
+/* } */
 
-.fresh{
+/* .fresh {
     color: rgb(4, 179, 91);
     font-size: small;
     font-weight: bold;
     font-style: italic;
     text-decoration: rgb(4, 179, 91) wavy underline;
-}
+} */
