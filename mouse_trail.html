@@ -30,8 +30,13 @@
             dot.style.left = (event.pageX - 4) + "px";
             dot.style.top = (event.pageY - 4) + "px";
             document.body.appendChild(dot);
+            function deleteDot() {
+                document.body.removeChild(dot);
+            }
+            setTimeout(deleteDot, 1000)
         });
     </script>
+    <a href="index.html"><h2>Home Page</h2></a>
 </body>
 
 </html>
