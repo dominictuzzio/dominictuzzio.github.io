@@ -16,8 +16,9 @@
             width: 8px;
             border-radius: 4px;
             /* rounds corners */
-            background: teal;
+            background: rgb(204, 44, 4);
             position: absolute;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -33,7 +34,7 @@
             function deleteDot() {
                 document.body.removeChild(dot);
             }
-            setTimeout(deleteDot, 1000)
+            setTimeout(deleteDot, 1500)
         });
     </script>
     <a href="index.html"><h2>Home Page</h2></a>
