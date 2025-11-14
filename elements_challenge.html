@@ -33,6 +33,9 @@
 </head>
 
 <body>
+    <a href="index.html">
+        <h2>Home Page</h2>
+    </a>
     <h1>Input Element Challenge</h1>
 
     <section id="part1">
@@ -66,9 +69,9 @@
         <h2>Part 3: Checkbox and Radio Buttons</h2>
         <label><input type="checkbox" id="subscribeBox"> Subscribe to newsletter</label>
         <p>Pick a mode:</p>
-        <label><input type="radio" name="mode" value="Light"> Light</label>
-        <label><input type="radio" name="mode" value="Dark"> Dark</label>
-        <label><input type="radio" name="mode" value="System" checked> System</label>
+        <label><input type="radio" name="mode" id="lightMode" value="Light"> Light</label>
+        <label><input type="radio" name="mode" id="darkMode" value="Dark"> Dark</label>
+        <label><input type="radio" name="mode" id="systemMode" value="System" checked> System</label>
         <button id="btnSubmit">Submit</button>
         <div class="output" id="modeOutput"></div>
     </section>
@@ -84,22 +87,27 @@
             let name = nameInput.value;
             let age = ageInput.value;
             greetingOutput.textContent = "Hello " + name + ", you are " + age + " years old."
-            if ( age < 13) {
+            if (age < 13) {
                 greetingOutput.textContent = "You're just a kid!"
             }
-            if (age === ""){
+            if (age === "") {
                 greetingOutput.textContent = "Please enter an age."
             }
-
+            if (name === "") {
+                greeetingOutput.textContent = "Please enter a name."
+            }
+            if (name === "", age === "") {
+                greetingOutput.textContent = "Please enter a name and an age."
+            }
         });
 
         // --- PART 2 ---
         const colorInput = document.getElementById("colorInput");
         const volumeInput = document.getElementById("volumeInput");
         const colorOutput = document.getElementById("colorOutput");
-        colorOutput.textContent = "Color Output."
-       
-        colorInput.addEventListener("input", () => {   
+        colorOutput.textContent = "Color Content"
+
+        colorInput.addEventListener("input", () => {
             let color = colorInput.value;
             colorOutput.style.backgroundColor = color
         });
@@ -111,8 +119,23 @@
         const subscribeBox = document.getElementById("subscribeBox");
         const btnSubmit = document.getElementById("btnSubmit");
         const modeOutput = document.getElementById("modeOutput");
+        const lightMode = document.getElementById("lightMode");
+        const darkMode = document.getElementById("darkMode");
+        const systemMode = document.getElementById("systemMode");
 
         btnSubmit.addEventListener("click", () => {
+            if (lightMode.checked) {
+               
+                document.body.style.backgroundColor = "white";
+                document.body.style.color = "black";
+            }
+            if (darkMode.checked) {
+                document.body.style.backgroundColor = "black";
+                document.body.style.color = "white";
+            }
+            if (systemMode.checked) {
+                 modeOutput.textContent = "System"
+            }
             // TODO: Find which radio button is checked and display it.
             // Challenge: Include whether the user subscribed or not.
         });
