@@ -94,9 +94,9 @@
                 greetingOutput.textContent = "Please enter an age."
             }
             if (name === "") {
-                greeetingOutput.textContent = "Please enter a name."
+                greetingOutput.textContent = "Please enter a name."
             }
-            if (name === "", age === "") {
+            if (name === "" && age === "") {
                 greetingOutput.textContent = "Please enter a name and an age."
             }
         });
@@ -125,7 +125,6 @@
 
         btnSubmit.addEventListener("click", () => {
             if (lightMode.checked) {
-               
                 document.body.style.backgroundColor = "white";
                 document.body.style.color = "black";
             }

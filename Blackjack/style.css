@@ -1,0 +1,13 @@
+#hit {
+    background-color: rgb(42, 119, 42);
+}
+
+#stand {
+    background-color: rgb(163, 34, 34);
+}
+
+button {
+    border-radius: 12px;
+    width: 128px;
+    height: 40px;
+}
