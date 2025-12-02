@@ -3,7 +3,10 @@
 }
 
 #stand {
-    background-color: rgb(163, 34, 34);
+    background-color: rgb(48, 87, 196);
+}
+#reset{
+    background-color: rgb(158, 34, 25);
 }
 
 button {

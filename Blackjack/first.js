@@ -34,7 +34,7 @@ function requestHit() {
 
 function updateDisplay() {
     let sum = sumHand()
-    
+
     document.getElementById("handDisplay").textContent = "Hand: " + hand
     document.getElementById("sumDisplay").textContent = "Sum: " + sumHand()
     if (sum < 21) {
@@ -49,7 +49,7 @@ function updateDisplay() {
         console.log("Sorry, you're over twenty-one. ")
         endingOutput.textContent = "Sorry, you're over twenty-one."
     }
-   
+}
 
 function hit() {
     hand.push(deck.pop())
@@ -84,14 +84,7 @@ function dealerDisplay() {
 
 
 
-function startGame() {
-    hit()
-    hit()
-    dealerHit()
-    dealerHit()
-}
 
-startGame()
 
 
 function sumDealerHand() {
@@ -110,7 +103,7 @@ function sumDealerHand() {
 }
 
 
-function displayDealersHand(){
+function displayDealersHand() {
     document.getElementById("dealersHandDisplay").textContent = "Dealer's Hand: " + dealersHand
 }
 
@@ -122,18 +115,34 @@ function requestStand() {
 }
 
 function stand() {
-while (sumDealerHand() < 17) {
-    dealerHit()
-    displayDealersHand()
-    let dealerSum = sumDealersHand()
-    // make sure dealer's sum is less than 21
-    if (dealerSum > sum ) {
-        console.log("Would you like to draw another card?")
-        endingOutput.textContent = "Would you like to draw another card?"
-
+    while (sumDealerHand() < 17) {
+        dealerHit()
     }
+    displayDealersHand()
 }
+    // make sure dealer's sum is less than 21
+    // if (dealerSum > sum ) {
+    //     console.log("Would you like to draw another card?")
+    //     endingOutput.textContent = "Would you like to draw another card?"
+
+    // }
+
+
+// const resetEvent = document.getElementById("reset")
+
+// resetEvent.addEventListener("click", requestHit);
+// function requestHit() {
+// let ___ = "" or __
+// startGame()
+//  add a reset function here to refresh the game  
+// }
+
+
+function startGame() {
+    hit()
+    hit()
+    dealerHit()
+    dealerHit()
 }
 
- 
-}
+startGame()
