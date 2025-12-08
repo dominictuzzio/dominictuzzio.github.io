@@ -14,18 +14,23 @@ function shuffleArray(array) {
     return shuffledArray;
 }
 
-let deck = shuffleArray([
-    2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 10, 10, 10,
-    2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 10, 10, 10,
-    2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 10, 10, 10,
-    2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 10, 10, 10,
-])
-
-
-let hand = []
-
+let deck, hand, dealersHand;
+function setupGame() {
+    deck = shuffleArray([
+        2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 10, 10, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 10, 10, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 10, 10, 10,
+        2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 10, 10, 10,
+    ])
+    hand = []
+    dealersHand = []
+}
+setupGame()
 // event handler here
 const hitEvent = document.getElementById("hit")
+const standEvent = document.getElementById("stand")
+const resetEvent = document.getElementById("reset")
+
 
 hitEvent.addEventListener("click", requestHit);
 function requestHit() {
@@ -71,7 +76,6 @@ function sumHand() {
     return sum
 }
 
-let dealersHand = []
 
 function dealerHit() {
     dealersHand.push(deck.pop())
@@ -107,7 +111,6 @@ function displayDealersHand() {
     document.getElementById("dealersHandDisplay").textContent = "Dealer's Hand: " + dealersHand
 }
 
-const standEvent = document.getElementById("stand")
 
 standEvent.addEventListener("click", requestStand);
 function requestStand() {
@@ -120,22 +123,30 @@ function stand() {
     }
     displayDealersHand()
 }
-    // make sure dealer's sum is less than 21
-    // if (dealerSum > sum ) {
-    //     console.log("Would you like to draw another card?")
-    //     endingOutput.textContent = "Would you like to draw another card?"
 
-    // }
-
-
-// const resetEvent = document.getElementById("reset")
-
-// resetEvent.addEventListener("click", requestHit);
-// function requestHit() {
-// let ___ = "" or __
-// startGame()
-//  add a reset function here to refresh the game  
+// let sumDealersHand = sumDealerHand()
+// let playersSum = sumHand()
+// // player's outcome compared to the dealer's outcome
+// if (sumDealersHand > playersSum && sumDealersHand <= 21) {
+//     console.log("Sorry the dealer beat you.")
+//     endingOutput.textContent = "Sorry the dealer beat you."
+// if(sumDealersHand < playersSum && playersSum <= 21)
+//     console.log("Congratulations, you beat the dealer!")
+//     endingOutput.textContent = "Congratulations, you beat the dealer!"
+// if(sumDealersHand == playersSum && sumDealersHand <= 21 && playersSum <= 21)
+//      console.log("It's a push (draw). Try again.")
+//     endingOutput.textContent = "It's a push (draw). Try again."
 // }
+
+
+// a reset function here to refresh the game 
+resetEvent.addEventListener("click", requestReset);
+function requestReset() {
+sumHand()
+sumDealerHand()
+setupGame()
+startGame() 
+}
 
 
 function startGame() {
