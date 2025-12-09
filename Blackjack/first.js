@@ -41,12 +41,10 @@ function updateDisplay() {
     let sum = sumHand()
 
     document.getElementById("handDisplay").textContent = "Hand: " + hand
-    document.getElementById("sumDisplay").textContent = "Sum: " + sumHand()
+    document.getElementById("sumDisplay").textContent = "Sum: " + sum
     if (sum < 21) {
         console.log("Would you like to draw another card?")
-        //create a text content + event listner 
         endingOutput.textContent = "Would you like to draw another card?"
-        // hit()
     } else if (sum === 21) {
         console.log("Congratulations! You've got twenty-one!")
         endingOutput.textContent = "Congratulations! You've got twenty-one!"
@@ -83,7 +81,9 @@ function dealerHit() {
 }
 
 function dealerDisplay() {
+
     document.getElementById("dealersHandDisplay").textContent = "Visible Card: " + dealersHand[0]
+
 }
 
 
@@ -111,41 +111,61 @@ function displayDealersHand() {
     document.getElementById("dealersHandDisplay").textContent = "Dealer's Hand: " + dealersHand
 }
 
-
 standEvent.addEventListener("click", requestStand);
 function requestStand() {
     stand()
 }
+
 
 function stand() {
     while (sumDealerHand() < 17) {
         dealerHit()
     }
     displayDealersHand()
+    document.getElementById("finalOutput")
+    let dealerSum = sumDealerHand()
+    let playerSum = sumHand()
+    if (dealerSum > playerSum && dealerSum <= 21) {
+        console.log("Sorry the dealer beat you.")
+        finalOutput.textContent = "Sorry the dealer beat you."
+    } else if (dealerSum < playerSum && playerSum <= 21) {
+        console.log("Congratulations, you beat the dealer!")
+        finalOutput.textContent = "Congratulations, you beat the dealer!"
+    } else if (dealerSum == playerSum && dealerSum <= 21 && playerSum <= 21) {
+        console.log("It's a push (draw). Try again.")
+        finalOutput.textContent = "It's a push (draw). Try again."
+    }
+    else if(dealerSum > 21){
+        console.log("The dealer bust. You win!")
+        finalOutput.textcontent = "The dealer bust. You win!"
+    }
 }
+
 
 // let sumDealersHand = sumDealerHand()
 // let playersSum = sumHand()
-// // player's outcome compared to the dealer's outcome
-// if (sumDealersHand > playersSum && sumDealersHand <= 21) {
-//     console.log("Sorry the dealer beat you.")
-//     endingOutput.textContent = "Sorry the dealer beat you."
-// if(sumDealersHand < playersSum && playersSum <= 21)
-//     console.log("Congratulations, you beat the dealer!")
-//     endingOutput.textContent = "Congratulations, you beat the dealer!"
-// if(sumDealersHand == playersSum && sumDealersHand <= 21 && playersSum <= 21)
+
+// // player's final outcome compared to the dealer's outcome
+// if (stand()){
+//  if (sumDealersHand > playersSum && sumDealersHand <= 21) {
+//      console.log("Sorry the dealer beat you.")
+//      finalOutput.textContent = "Sorry the dealer beat you."
+//  } else if(sumDealersHand < playersSum && playersSum <= 21){
+//      console.log("Congratulations, you beat the dealer!")
+//      finalOutput.textContent = "Congratulations, you beat the dealer!"
+//  } else if(sumDealersHand == playersSum && sumDealersHand <= 21 && playersSum <= 21)
 //      console.log("It's a push (draw). Try again.")
-//     endingOutput.textContent = "It's a push (draw). Try again."
+//      finalOutput.textContent = "It's a push (draw). Try again."
 // }
 
 
 // a reset function here to refresh the game 
 resetEvent.addEventListener("click", requestReset);
 function requestReset() {
-sumHand()
-sumDealerHand()
-setupGame()
-startGame() 
+    sumHand()
+    sumDealerHand()
+    setupGame()
+    startGame()
 }
 
 
