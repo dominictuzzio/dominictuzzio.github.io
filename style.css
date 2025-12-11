@@ -16,11 +16,30 @@ body {
     font-family: "Gentium Book Plus";
 }
 
+.hbutton {
+    width: 120px;
+    height: 40px;
+    border-radius: 12px;
+    background: var(--secondary);
+}
+
 .image-border {
     padding: 4px 4px 0px;
     border-radius: 16px;
     background: var(--secondary);
     display: inline-block;
+}
+
+.flex {
+    display: flex;
+}
+
+div.flex{
+    justify-content: center;
+}
+
+nav.flex {
+    justify-content: center;
 }
 
 p {

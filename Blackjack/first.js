@@ -139,6 +139,10 @@ function stand() {
         console.log("The dealer bust. You win!")
         finalOutput.textcontent = "The dealer bust. You win!"
     }
+    else if(dealerSum == 21){
+        console.log("Sorry, the dealer got twenty-one.")
+        finalOutput.textcontent = "Sorry, the dealer got twenty-one."
+    }
 }
 
 
