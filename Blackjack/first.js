@@ -128,10 +128,12 @@ function stand() {
     if (dealerSum > playerSum && dealerSum <= 21) {
         console.log("Sorry the dealer beat you.")
         finalOutput.textContent = "Sorry the dealer beat you."
-    } else if (dealerSum < playerSum && playerSum <= 21) {
+    } 
+    else if (dealerSum < playerSum && playerSum <= 21) {
         console.log("Congratulations, you beat the dealer!")
         finalOutput.textContent = "Congratulations, you beat the dealer!"
-    } else if (dealerSum == playerSum && dealerSum <= 21 && playerSum <= 21) {
+    } 
+    else if (dealerSum == playerSum && dealerSum <= 21 && playerSum <= 21) {
         console.log("It's a push (draw). Try again.")
         finalOutput.textContent = "It's a push (draw). Try again."
     }
@@ -142,6 +144,10 @@ function stand() {
     else if(dealerSum == 21){
         console.log("Sorry, the dealer got twenty-one.")
         finalOutput.textcontent = "Sorry, the dealer got twenty-one."
+    }
+    else if (playerSum > 21) {
+        console.log("Sorry, you're over twenty-one. ")
+        finalOutput.textContent = "Sorry, you're over twenty-one."
     }
 }
 
@@ -171,6 +177,7 @@ function requestReset() {
     setupGame()
     startGame()
 }
+
 
 
 function startGame() {

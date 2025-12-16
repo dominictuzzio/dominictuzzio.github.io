@@ -16,10 +16,23 @@ body {
     font-family: "Gentium Book Plus";
 }
 
+.abutton {
+    width: 1800px;
+    height: 80px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--secondary);
+}
+
 .hbutton {
-    width: 120px;
-    height: 40px;
-    border-radius: 12px;
+    width: 300px;
+    height: 80px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: var(--secondary);
 }
 
@@ -30,11 +43,16 @@ body {
     display: inline-block;
 }
 
+.flex1 {
+    display: flex;
+    justify-content: center;
+}
+
 .flex {
     display: flex;
 }
 
-div.flex{
+div.flex {
     justify-content: center;
 }
 
@@ -53,14 +71,14 @@ img {
     background: var(--secondary);
 }
 
-audio {
+/* audio {
     padding: 3px;
     border-radius: 16px;
     background: var(--accent);
     margin: 1em;
     margin: 20px;
     border: 2mm ridge var(--accent);
-}
+} */
 
 /* .sweet {
     color: hsl(34, 96%, 20%);
