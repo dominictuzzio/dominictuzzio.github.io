@@ -39,7 +39,6 @@ function requestHit() {
 
 function updateDisplay() {
     let sum = sumHand()
-
     document.getElementById("handDisplay").textContent = "Hand: " + hand
     document.getElementById("sumDisplay").textContent = "Sum: " + sum
     if (sum < 21) {
@@ -82,7 +81,7 @@ function dealerHit() {
 
 function dealerDisplay() {
 
-    document.getElementById("dealersHandDisplay").textContent = "Visible Card: " + dealersHand[0]
+    document.getElementById("dealersHandDisplay").textContent = "Dealer's Visible Card: " + dealersHand[0]
 
 }
 
@@ -92,24 +91,30 @@ function dealerDisplay() {
 
 
 function sumDealerHand() {
-    let sum = 0
+    let sumDealer = 0
     for (let card of dealersHand) {
-        sum += card
+        sumDealer += card
     }
     for (let card of dealersHand) {
-        if (sum > 21) {
+        if (sumDealer > 21) {
             if (card == 11) {
-                sum -= 10
+                sumDealer -= 10
             }
         }
     }
-    return sum
+    return sumDealer
 }
 
 
 function displayDealersHand() {
     document.getElementById("dealersHandDisplay").textContent = "Dealer's Hand: " + dealersHand
 }
+
+function displayDealerSum(){
+    let sumDealer = sumDealerHand()
+    document.getElementById("dealerSumDisplay").textContent = "Dealer's Sum: " + sumDealer
+}
+
 
 standEvent.addEventListener("click", requestStand);
 function requestStand() {
@@ -122,6 +127,7 @@ function stand() {
         dealerHit()
     }
     displayDealersHand()
+    displayDealerSum()
     document.getElementById("finalOutput")
     let dealerSum = sumDealerHand()
     let playerSum = sumHand()
@@ -176,6 +182,7 @@ function requestReset() {
     sumDealerHand()
     setupGame()
     startGame()
+    finalOutput.textContent = " "
 }
 
 
