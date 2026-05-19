@@ -27,10 +27,12 @@ function setupGame() {
 }
 setupGame()
 // event handler here
-const hitEvent = document.getElementById("hit")
-const standEvent = document.getElementById("stand")
-const resetEvent = document.getElementById("reset")
-
+const hitEvent = document.getElementById("hit");
+const standEvent = document.getElementById("stand");
+const resetEvent = document.getElementById("reset");
+const betConfirm = document.getElementById("betEvent");
+const betInput = document.getElementById("betInput");
+const betOutput = document.getElementById("betOutput");
 
 hitEvent.addEventListener("click", requestHit);
 function requestHit() {
@@ -121,6 +123,11 @@ function requestStand() {
     stand()
 }
 
+//betting event listener
+// betConfirm.addEventListener("click", () => {
+//     let bet = betInput.value;
+//     betOutput.textContent = "Please confirm the bet:" +  bet
+// });
 
 function stand() {
     while (sumDealerHand() < 17) {
@@ -156,6 +163,7 @@ function stand() {
         finalOutput.textContent = "Sorry, you're over twenty-one."
     }
 }
+
 
 
 // let sumDealersHand = sumDealerHand()
