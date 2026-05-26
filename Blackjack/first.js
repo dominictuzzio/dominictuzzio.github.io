@@ -30,9 +30,15 @@ setupGame()
 const hitEvent = document.getElementById("hit");
 const standEvent = document.getElementById("stand");
 const resetEvent = document.getElementById("reset");
-const betConfirm = document.getElementById("betEvent");
+const betConfirm = document.getElementById("betConfirm");
 const betInput = document.getElementById("betInput");
 const betOutput = document.getElementById("betOutput");
+const playerBet = document.getElementById("playerBet");
+
+
+
+
+
 
 hitEvent.addEventListener("click", requestHit);
 function requestHit() {
@@ -124,10 +130,14 @@ function requestStand() {
 }
 
 //betting event listener
-// betConfirm.addEventListener("click", () => {
-//     let bet = betInput.value;
-//     betOutput.textContent = "Please confirm the bet:" +  bet
-// });
+betConfirm.addEventListener("click", () => {
+    let bet = betInput.value;
+    betOutput.textContent = "You placed " + bet + " chips on this hand."
+    //let chips = chips - bet
+    startGame()
+});
+// playerBet.textContent = "Your chips: " + chips
+
 
 function stand() {
     while (sumDealerHand() < 17) {
@@ -145,12 +155,13 @@ function stand() {
     else if (dealerSum < playerSum && playerSum <= 21) {
         console.log("Congratulations, you beat the dealer!")
         finalOutput.textContent = "Congratulations, you beat the dealer!"
+        // chips
     } 
     else if (dealerSum == playerSum && dealerSum <= 21 && playerSum <= 21) {
         console.log("It's a push (draw). Try again.")
         finalOutput.textContent = "It's a push (draw). Try again."
     }
-    else if(dealerSum > 21){
+    else if(dealerSum > 21 && playerSum <= 21){
         console.log("The dealer bust. You win!")
         finalOutput.textcontent = "The dealer bust. You win!"
     }
@@ -186,13 +197,15 @@ function stand() {
 // a reset function here to refresh the game 
 resetEvent.addEventListener("click", requestReset);
 function requestReset() {
-    sumHand()
-    sumDealerHand()
     setupGame()
-    startGame()
+    document.getElementById("handDisplay").textContent = "Hand: "
+    document.getElementById("sumDisplay").textContent = "Sum: "
+    document.getElementById("dealersHandDisplay").textContent = "Dealer's Hand: "
+    endingOutput.textContent = " "
     finalOutput.textContent = " "
+    dealerSumDisplay.textContent = " "
+    betOutput.textContent = "Please enter and confirm a bet."
 }
-
 
 
 function startGame() {
@@ -200,6 +213,5 @@ function startGame() {
     hit()
     dealerHit()
     dealerHit()
+    //let chips = 100
 }
-
-startGame()

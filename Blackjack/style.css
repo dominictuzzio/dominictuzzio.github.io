@@ -14,3 +14,9 @@ button {
     width: 128px;
     height: 40px;
 }
+
+#betConfirm{
+    border-radius: 6px;
+    width: 60px;
+    height: 35px;
+}
