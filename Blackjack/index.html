@@ -18,17 +18,20 @@
     <a href="/">
         <h2>Home Page</h2>
     </a>
+    <title>Blackjack Betting System</title>
+ <body>
+  <h1>Blackjack Betting System</h1>
+  <div id="gameBox">
+    <h2 id="moneyText">Money: $1000</h2>
+    <input type="number" id="betInput" placeholder="Enter Bet">
+    <br><br>
+    <button id="betButton">Place Bet</button>
+    <button id="winButton">Win Round</button>
+    <button id="loseButton">Lose Round</button>
+    <div id="message"></div>
+  </div>
+  <br>
     <h2>Your Hand:</h2>
-    <label>
-        Bet
-        <input id="betInput" type="number" min="0" max="10000">
-    </label> 
-    <br>
-    <br>
-    <button id="betConfirm">Confirm Bet</button>
-    <div class ="output" id="betOutput"> </div>
-    <div id="playerBet"> </div>
-    <br>
     <button id="hit">Hit</button>
     <button id="stand">Stand</button>
     <button id="reset">Reset</button>

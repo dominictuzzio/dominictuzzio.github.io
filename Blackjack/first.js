@@ -30,10 +30,10 @@ setupGame()
 const hitEvent = document.getElementById("hit");
 const standEvent = document.getElementById("stand");
 const resetEvent = document.getElementById("reset");
-const betConfirm = document.getElementById("betConfirm");
-const betInput = document.getElementById("betInput");
-const betOutput = document.getElementById("betOutput");
-const playerBet = document.getElementById("playerBet");
+// const betConfirm = document.getElementById("betConfirm");
+// const betInput = document.getElementById("betInput");
+// const betOutput = document.getElementById("betOutput");
+// const playerBet = document.getElementById("playerBet");
 
 
 
@@ -130,13 +130,12 @@ function requestStand() {
 }
 
 //betting event listener
-betConfirm.addEventListener("click", () => {
-    let bet = betInput.value;
-    betOutput.textContent = "You placed " + bet + " chips on this hand."
-    //let chips = chips - bet
-    startGame()
-});
-// playerBet.textContent = "Your chips: " + chips
+// betConfirm.addEventListener("click", () => {
+//     let bet = betInput.value;
+//     betOutput.textContent = "You placed " + bet + " chips on this hand."
+//     //let chips = chips - bet
+//     startGame()
+// });
 
 
 function stand() {
@@ -175,7 +174,78 @@ function stand() {
     }
 }
 
+//betting system
+    let money = 1000;
+    let currentBet = 0;
 
+    let moneyText = document.getElementById("moneyText");
+    let message = document.getElementById("message");
+
+    let betButton = document.getElementById("betButton");
+    let winButton = document.getElementById("winButton");
+    let loseButton = document.getElementById("loseButton");
+
+    betButton.addEventListener("click", placeBet);
+
+    winButton.addEventListener("click", winRound);
+
+    loseButton.addEventListener("click", loseRound);
+    
+    function placeBet() {
+      let betInput = document.getElementById("betInput");
+      let bet = Number(betInput.value);
+
+      for (let i = 0; i < 1; i++) {
+        if (bet <= 0) {
+          message.innerHTML = "Enter a valid bet.";
+        }
+
+        else if (bet > money) {
+          message.innerHTML = "Not enough money.";
+        }
+
+        else {
+          currentBet = bet;
+          message.innerHTML = "Bet placed: $" + currentBet;
+        }
+      }
+      startGame()
+    }
+
+    function winRound() {
+      if (currentBet > 0) {
+        money = money + currentBet;
+        updateMoney();
+        message.innerHTML = "You won $" + currentBet;
+        currentBet = 0;
+      }
+      else {
+        message.innerHTML = "Place a bet first.";
+      }
+
+    }
+
+    function loseRound() {
+
+      if (currentBet > 0) {
+        money = money - currentBet;
+        updateMoney();
+        message.innerHTML = "You lost $" + currentBet;
+        currentBet = 0;
+
+        if (money <= 0) {
+          message.innerHTML = "Game Over";
+        }
+      }
+
+      else {
+        message.innerHTML = "Place a bet first.";
+      }
+
+    }
+    function updateMoney() {
+      moneyText.innerHTML = "Money: $" + money;
+    }
 
 // let sumDealersHand = sumDealerHand()
 // let playersSum = sumHand()
@@ -204,7 +274,7 @@ function requestReset() {
     endingOutput.textContent = " "
     finalOutput.textContent = " "
     dealerSumDisplay.textContent = " "
-    betOutput.textContent = "Please enter and confirm a bet."
+    message.innerHTML = "Please enter a bet"
 }
 
 
@@ -213,5 +283,4 @@ function startGame() {
     hit()
     dealerHit()
     dealerHit()
-    //let chips = 100
 }
