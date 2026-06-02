@@ -52,13 +52,8 @@ function updateDisplay() {
     if (sum < 21) {
         console.log("Would you like to draw another card?")
         endingOutput.textContent = "Would you like to draw another card?"
-    } else if (sum === 21) {
-        console.log("Congratulations! You've got twenty-one!")
-        endingOutput.textContent = "Congratulations! You've got twenty-one!"
-    } else if (sum > 21) {
-        console.log("Sorry, you're over twenty-one. ")
-        endingOutput.textContent = "Sorry, you're over twenty-one."
     }
+    
 }
 
 function hit() {
@@ -150,11 +145,18 @@ function stand() {
     if (dealerSum > playerSum && dealerSum <= 21) {
         console.log("Sorry the dealer beat you.")
         finalOutput.textContent = "Sorry the dealer beat you."
-    } 
+        loseRound()
+    }  
+    else if (playerSum == 21) {
+        console.log("Congratulations! You've got twenty-one!")
+        finalOutput.textContent = "Congratulations! You've got twenty-one!"
+        winRound()
+    }
+
     else if (dealerSum < playerSum && playerSum <= 21) {
         console.log("Congratulations, you beat the dealer!")
         finalOutput.textContent = "Congratulations, you beat the dealer!"
-        // chips
+        winRound()
     } 
     else if (dealerSum == playerSum && dealerSum <= 21 && playerSum <= 21) {
         console.log("It's a push (draw). Try again.")
@@ -163,14 +165,18 @@ function stand() {
     else if(dealerSum > 21 && playerSum <= 21){
         console.log("The dealer bust. You win!")
         finalOutput.textcontent = "The dealer bust. You win!"
+        winRound()
     }
-    else if(dealerSum == 21){
+    else if(dealerSum == 21 && playerSum < 21){
         console.log("Sorry, the dealer got twenty-one.")
         finalOutput.textcontent = "Sorry, the dealer got twenty-one."
+        loseRound()
     }
     else if (playerSum > 21) {
         console.log("Sorry, you're over twenty-one. ")
         finalOutput.textContent = "Sorry, you're over twenty-one."
+        loseRound()
+        
     }
 }
 
@@ -181,16 +187,15 @@ function stand() {
     let moneyText = document.getElementById("moneyText");
     let message = document.getElementById("message");
 
-    let betButton = document.getElementById("betButton");
-    let winButton = document.getElementById("winButton");
-    let loseButton = document.getElementById("loseButton");
-
+    // UNCOMMENT TO MAKE HONOR SYSTEM
+    // let betButton = document.getElementById("betButton");
+    // let winButton = document.getElementById("winButton");
+    // let loseButton = document.getElementById("loseButton");
+    // winButton.addEventListener("click", winRound);
+    // loseButton.addEventListener("click", loseRound);
+    
     betButton.addEventListener("click", placeBet);
 
-    winButton.addEventListener("click", winRound);
-
-    loseButton.addEventListener("click", loseRound);
-    
     function placeBet() {
       let betInput = document.getElementById("betInput");
       let bet = Number(betInput.value);
@@ -199,17 +204,15 @@ function stand() {
         if (bet <= 0) {
           message.innerHTML = "Enter a valid bet.";
         }
-
         else if (bet > money) {
           message.innerHTML = "Not enough money.";
         }
-
         else {
           currentBet = bet;
           message.innerHTML = "Bet placed: $" + currentBet;
+          startGame()
         }
       }
-      startGame()
     }
 
     function winRound() {
@@ -226,7 +229,6 @@ function stand() {
     }
 
     function loseRound() {
-
       if (currentBet > 0) {
         money = money - currentBet;
         updateMoney();
