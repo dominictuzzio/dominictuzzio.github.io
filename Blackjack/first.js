@@ -57,6 +57,9 @@ function updateDisplay() {
 }
 
 function hit() {
+    if playerSum > 21{
+        return
+    }
     hand.push(deck.pop())
     updateDisplay()
 }
@@ -269,7 +272,6 @@ function stand() {
 // a reset function here to refresh the game 
 resetEvent.addEventListener("click", requestReset);
 function requestReset() {
-    setupGame()
     document.getElementById("handDisplay").textContent = "Hand: "
     document.getElementById("sumDisplay").textContent = "Sum: "
     document.getElementById("dealersHandDisplay").textContent = "Dealer's Hand: "
@@ -277,6 +279,7 @@ function requestReset() {
     finalOutput.textContent = " "
     dealerSumDisplay.textContent = " "
     message.innerHTML = "Please enter a bet"
+    setupGame()
 }
 
 
